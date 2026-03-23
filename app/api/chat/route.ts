@@ -1,32 +1,60 @@
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenAI } from "@google/genai";
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
 });
 
 export async function POST(req: Request) {
-  const { message, topic } = await req.json();
+  try {
+    const { message, topic } = await req.json();
 
-  const response = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
-    max_tokens: 1000,
-    system: `You are ClearCase, an AI legal guidance assistant 
-    specialized exclusively in Indian law. 
-    Current legal topic: ${topic || "General Legal Query"}.
-    Only answer questions related to Indian law, legal procedures, 
-    court processes, IPC sections, divorce under Hindu Marriage Act, 
-    traffic challans, property disputes, and document requirements.
-    If asked anything unrelated to Indian law, respond exactly with:
-    "I am ClearCase, specialized in Indian legal guidance only. 
-    I cannot help with that query. Please ask me something 
-    related to Indian law."
-    Always end every response with a new line:
-    "⚠️ Disclaimer: This is AI-assisted guidance, not legal advice. 
-    Please consult a qualified lawyer for final decisions."`,
-    messages: [{ role: "user", content: message }],
-  });
+    if (!message || !message.trim()) {
+      return Response.json(
+        { reply: null, error: "Message is required." },
+        { status: 400 }
+      );
+    }
 
-  const text =
-    response.content[0].type === "text" ? response.content[0].text : "";
-  return Response.json({ reply: text });
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: message,
+      config: {
+        systemInstruction: `
+You are ClearCase, an AI legal guidance assistant specialized in Indian law.
+
+Current topic: ${topic ?? "general legal query"}.
+
+Behavior rules:
+- You can respond normally to greetings like "hello", "hi", etc. in a friendly way.
+- Politely guide users toward asking legal questions after greeting.
+- Only provide detailed answers for Indian law-related queries.
+- If the user asks something completely unrelated to law, gently respond:
+  "I am ClearCase, specialized in Indian legal guidance. Please ask a legal question."
+
+- Be practical, structured, and easy to understand.
+- Ask follow-up questions if details are missing.
+- Never invent laws or sections.
+
+Always end legal answers with:
+"Disclaimer: This is AI guidance, not legal advice."
+`.trim(),
+        temperature: 0.2,
+        maxOutputTokens: 1000,
+      },
+    });
+
+    return Response.json({
+      reply: response.text ?? "",
+    });
+  } catch (error: any) {
+    console.error("Gemini API Error:", error);
+
+    return Response.json(
+      {
+        reply: null,
+        error: error?.message || "Unknown Gemini error",
+      },
+      { status: 500 }
+    );
+  }
 }
