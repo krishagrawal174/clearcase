@@ -7,6 +7,10 @@ import { ChatMessages, type Message } from '@/components/chat/chat-messages'
 import { ChatInput } from '@/components/chat/chat-input'
 import { MobileNav } from '@/components/chat/mobile-nav'
 import { AlimonyCalculator } from '@/components/chat/alimony-calculator'
+import { ChallanEstimator } from '@/components/chat/challan-estimator'
+import { DocumentSelector } from '@/components/chat/document-selector'
+import { PropertySelector } from '@/components/chat/property-selector'
+import { FamilyLawSelector } from '@/components/chat/family-law-selector'
 import { CustomCursor } from '@/components/custom-cursor'
 import { Navbar } from '@/components/navbar'
 
@@ -19,7 +23,68 @@ const topicLabels: Record<string, string> = {
   general: 'General Legal Query',
 }
 
-const welcomeMessage = `Namaste! I'm ClearCase AI ⚖️
+const topicWelcomeMessages: Record<string, string> = {
+  divorce: `Namaste! I'm your Divorce & Separation Guide.
+
+I specialize in Indian matrimonial law including:
+• Hindu Marriage Act, 1955
+• Special Marriage Act, 1954
+• Muslim Personal Law (Shariat) Application Act
+
+Use the Alimony Calculator above to estimate maintenance amounts, then describe your situation below. I'll provide step-by-step guidance on grounds for divorce, procedure, and your legal rights.
+
+What would you like to know about divorce proceedings?`,
+
+  challan: `Namaste! I'm your Traffic Challan Advisor.
+
+I can help you understand and resolve traffic violations under the Motor Vehicles Act, 2019 and state-specific traffic rules.
+
+Use the Fine Estimator above to check potential penalties for your violation, then describe your situation. I'll guide you on:
+• How to pay or contest a challan
+• Court procedures if needed
+• License suspension rules
+• State-wise variations
+
+What traffic-related issue can I help you with?`,
+
+  documents: `Namaste! I'm your Document Requirements Expert.
+
+I have detailed knowledge of documentation requirements for all major Indian government services and procedures.
+
+Use the Document Finder above to instantly see required documents for passports, licenses, property registration, and more. Then ask me for:
+• Additional clarifications
+• State-specific variations
+• Tips to expedite processing
+• Common rejection reasons
+
+Which document or service do you need help with?`,
+
+  property: `Namaste! I'm your Property Dispute Specialist.
+
+I can guide you through all types of property matters under Indian law including:
+• Transfer of Property Act
+• Registration Act
+• State-specific land revenue laws
+• RERA for real estate issues
+
+Use the Property Dispute Analyzer above to understand your legal options, then describe your specific situation. I'll help you understand your rights and the legal process.
+
+What property issue are you facing?`,
+
+  family: `Namaste! I'm your Family Law Counselor.
+
+I specialize in all aspects of family law in India:
+• Custody and guardianship
+• Maintenance and alimony
+• Domestic violence protection
+• Adoption procedures
+• Succession and inheritance
+
+Use the Case Guide above to explore different family law matters, then share your situation. I'll provide compassionate, practical legal guidance.
+
+How can I assist you with your family law matter?`,
+
+  general: `Namaste! I'm ClearCase AI.
 
 I'm trained exclusively on Indian law. Please describe your legal situation and I'll guide you step by step.
 
@@ -30,7 +95,10 @@ You can ask me about:
 • Family law matters
 • Document requirements for government services
 
-How can I assist you today?`
+Or select a specific topic from the sidebar for specialized tools and guidance.
+
+How can I assist you today?`,
+}
 
 export default function ChatPage() {
   const [activeTopic, setActiveTopic] = useState('general')
@@ -42,6 +110,7 @@ export default function ChatPage() {
   // Typewriter effect for welcome message
   useEffect(() => {
     if (showWelcome && messages.length === 0) {
+      const currentWelcome = topicWelcomeMessages[activeTopic] || topicWelcomeMessages.general
       const welcomeMsg: Message = {
         id: 'welcome',
         role: 'assistant',
@@ -51,10 +120,10 @@ export default function ChatPage() {
       
       let index = 0
       const interval = setInterval(() => {
-        if (index < welcomeMessage.length) {
+        if (index < currentWelcome.length) {
           setMessages([{
             ...welcomeMsg,
-            content: welcomeMessage.slice(0, index + 1),
+            content: currentWelcome.slice(0, index + 1),
           }])
           index++
         } else {
@@ -119,10 +188,22 @@ export default function ChatPage() {
   }
 
   const handleNewChat = () => {
+    const currentWelcome = topicWelcomeMessages[activeTopic] || topicWelcomeMessages.general
     setMessages([{
       id: 'welcome',
       role: 'assistant',
-      content: welcomeMessage,
+      content: currentWelcome,
+    }])
+  }
+
+  // Handle topic change - reset messages with new welcome
+  const handleTopicChange = (topic: string) => {
+    setActiveTopic(topic)
+    const currentWelcome = topicWelcomeMessages[topic] || topicWelcomeMessages.general
+    setMessages([{
+      id: 'welcome',
+      role: 'assistant',
+      content: currentWelcome,
     }])
   }
 
@@ -136,7 +217,7 @@ export default function ChatPage() {
       {/* Sidebar */}
       <ChatSidebar
         activeTopic={activeTopic}
-        onTopicChange={setActiveTopic}
+        onTopicChange={handleTopicChange}
         onNewChat={handleNewChat}
       />
 
@@ -165,8 +246,12 @@ export default function ChatPage() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Alimony Calculator - Only show for Family Law topic */}
-        {activeTopic === 'family' && <AlimonyCalculator />}
+        {/* Topic-specific tools */}
+        {activeTopic === 'divorce' && <AlimonyCalculator />}
+        {activeTopic === 'challan' && <ChallanEstimator />}
+        {activeTopic === 'documents' && <DocumentSelector />}
+        {activeTopic === 'property' && <PropertySelector />}
+        {activeTopic === 'family' && <FamilyLawSelector />}
 
         {/* Input */}
         <ChatInput onSend={handleSend} disabled={isTyping} />
