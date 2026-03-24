@@ -63,13 +63,13 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 justify-center mb-12 px-4 sm:px-0">
-          <Link href="/chat" className="w-full sm:w-auto">
+          <Link href="/get-help" className="w-full sm:w-auto">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="relative w-full sm:w-auto h-[52px] px-8 rounded-xl font-semibold text-[#050d1f] gold-shimmer shadow-lg shadow-[rgba(201,168,76,0.25)] flex items-center justify-center gap-2"
             >
-              Get Started Free
+              Start Free Consultation
               <span className="text-lg">→</span>
             </motion.button>
           </Link>

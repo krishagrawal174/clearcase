@@ -6,13 +6,11 @@ import { motion } from 'framer-motion'
 import { Scale, Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/chat', label: 'Legal Chat' },
+  { href: '/get-help', label: 'Get Help' },
   { href: '/documents', label: 'Documents' },
   { href: '/ipc', label: 'IPC Finder' },
   { href: '/book-lawyer', label: 'Book a Lawyer' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/dashboard', label: 'Lawyer Portal' },
 ]
 
 export function Navbar() {
@@ -40,7 +38,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          {/* Logo - Clickable to Home */}
           <Link href="/" className="flex items-center gap-2 group">
             <motion.div
               whileHover={{ rotate: 10 }}
@@ -69,22 +67,13 @@ export function Navbar() {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/dashboard">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-4 py-2.5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[rgba(201,168,76,0.3)] hover:border-[#c9a84c] transition-colors"
-              >
-                I'm a Lawyer
-              </motion.button>
-            </Link>
-            <Link href="/chat">
+            <Link href="/get-help">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative px-5 py-2.5 rounded-lg font-medium text-sm text-[#050d1f] overflow-hidden gold-shimmer"
               >
-                Get Started Free
+                Start Free Consultation
               </motion.button>
             </Link>
           </div>
@@ -116,9 +105,9 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/chat" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/get-help" onClick={() => setMobileMenuOpen(false)}>
               <button className="w-full mt-4 px-5 py-2.5 rounded-lg font-medium text-sm text-[#050d1f] gold-shimmer">
-                Get Started Free
+                Start Free Consultation
               </button>
             </Link>
           </motion.div>
