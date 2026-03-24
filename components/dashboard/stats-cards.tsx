@@ -1,38 +1,46 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Briefcase, Brain, Clock } from 'lucide-react'
+import { Users, Briefcase, Calendar, IndianRupee, TrendingUp, TrendingDown } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
 
 const stats = [
   {
     icon: Users,
-    value: 12,
-    label: 'Active Clients',
+    value: 24,
+    label: 'Total Clients',
     trend: '+3 this month',
+    trendUp: true,
     gradient: 'from-[#c9a84c] to-[#e8d48a]',
+    bgGlow: 'rgba(201,168,76,0.1)',
   },
   {
     icon: Briefcase,
-    value: 8,
-    label: 'Cases This Month',
-    trend: '+2 from last month',
-    gradient: 'from-[#7b61ff] to-[#a78bfa]',
+    value: 18,
+    label: 'Active Cases',
+    trend: '5 hearings pending',
+    trendUp: true,
+    gradient: 'from-[#3b82f6] to-[#60a5fa]',
+    bgGlow: 'rgba(59,130,246,0.1)',
   },
   {
-    icon: Brain,
-    value: 47,
-    label: 'AI Analyses Done',
-    trend: '+12% this month',
-    gradient: 'from-[#14b8a6] to-[#5eead4]',
+    icon: Calendar,
+    value: 7,
+    label: 'Hearings This Week',
+    trend: '2 tomorrow',
+    trendUp: false,
+    gradient: 'from-[#8b5cf6] to-[#a78bfa]',
+    bgGlow: 'rgba(139,92,246,0.1)',
   },
   {
-    icon: Clock,
-    value: 23,
-    label: 'Time Saved',
-    suffix: ' hrs',
-    trend: 'This month',
-    gradient: 'from-[#f97316] to-[#fb923c]',
+    icon: IndianRupee,
+    value: 1.85,
+    suffix: 'L',
+    label: 'Earnings This Month',
+    trend: '+12% vs last month',
+    trendUp: true,
+    gradient: 'from-[#10b981] to-[#34d399]',
+    bgGlow: 'rgba(16,185,129,0.1)',
   },
 ]
 
@@ -64,30 +72,50 @@ export function StatsCards() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4"
     >
       {stats.map((stat) => (
         <motion.div
           key={stat.label}
           variants={itemVariants}
-          whileHover={{ scale: 1.02, y: -2 }}
-          className="relative p-5 md:p-6 rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] transition-all duration-300 hover:border-[rgba(201,168,76,0.3)]"
+          whileHover={{ scale: 1.02, y: -4 }}
+          className="relative p-5 rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] overflow-hidden group"
         >
-          {/* Icon */}
-          <div className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${stat.gradient} mb-4`}>
-            <stat.icon className="w-5 h-5 text-[#050d1f]" />
+          {/* Background Glow */}
+          <div 
+            className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{ backgroundColor: stat.bgGlow }}
+          />
+
+          <div className="relative z-10">
+            {/* Icon */}
+            <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${stat.gradient} mb-4`}>
+              <stat.icon className="w-5 h-5 text-white" />
+            </div>
+
+            {/* Value */}
+            <div className="font-serif text-3xl font-bold text-[#f0f4ff] mb-1">
+              <AnimatedCounter 
+                end={stat.value} 
+                suffix={stat.suffix || ''} 
+                duration={1.5}
+                decimals={stat.suffix === 'L' ? 2 : 0}
+              />
+            </div>
+
+            {/* Label */}
+            <div className="text-sm text-[#8892a4] mb-3">{stat.label}</div>
+
+            {/* Trend */}
+            <div className={`flex items-center gap-1 text-xs ${stat.trendUp ? 'text-green-400' : 'text-[#c9a84c]'}`}>
+              {stat.trendUp ? (
+                <TrendingUp className="w-3.5 h-3.5" />
+              ) : (
+                <TrendingDown className="w-3.5 h-3.5" />
+              )}
+              {stat.trend}
+            </div>
           </div>
-
-          {/* Value */}
-          <div className="font-serif text-3xl md:text-4xl font-bold text-[#f0f4ff] mb-1">
-            <AnimatedCounter end={stat.value} suffix={stat.suffix || ''} duration={1.5} />
-          </div>
-
-          {/* Label */}
-          <div className="text-sm text-[#8892a4] mb-2">{stat.label}</div>
-
-          {/* Trend */}
-          <div className="text-xs text-[#c9a84c]">{stat.trend}</div>
         </motion.div>
       ))}
     </motion.div>

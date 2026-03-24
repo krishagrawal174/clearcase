@@ -1,44 +1,148 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { AnimatedCounter } from '@/components/animated-counter'
+import { useRef, useState, useEffect } from 'react'
+import { MessageSquare, Users, Clock, Shield } from 'lucide-react'
 
 const stats = [
-  { value: 10000, suffix: '+', label: 'Queries Resolved' },
-  { value: 500, suffix: '+', label: 'Lawyers Onboarded' },
-  { value: 20, suffix: '+', label: 'Legal Categories' },
+  { 
+    icon: MessageSquare,
+    value: 10000, 
+    suffix: '+', 
+    label: 'Queries Resolved',
+    description: 'Legal questions answered'
+  },
+  { 
+    icon: Users,
+    value: 500, 
+    suffix: '+', 
+    label: 'Lawyers Onboarded',
+    description: 'Verified professionals'
+  },
+  { 
+    icon: Clock,
+    value: 24, 
+    suffix: '/7', 
+    label: 'Always Available',
+    description: 'Round the clock support'
+  },
+  { 
+    icon: Shield,
+    value: 100, 
+    suffix: '%', 
+    label: 'Privacy Guaranteed',
+    description: 'Your data stays yours'
+  },
 ]
+
+function AnimatedNumber({ value, suffix, isInView }: { value: number; suffix: string; isInView: boolean }) {
+  const [count, setCount] = useState(0)
+  const hasAnimated = useRef(false)
+
+  useEffect(() => {
+    if (isInView && !hasAnimated.current) {
+      hasAnimated.current = true
+      const duration = 2000
+      const startTime = Date.now()
+
+      const animate = () => {
+        const now = Date.now()
+        const progress = Math.min((now - startTime) / duration, 1)
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+        setCount(Math.floor(easeOutQuart * value))
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        } else {
+          setCount(value)
+        }
+      }
+
+      requestAnimationFrame(animate)
+    }
+  }, [isInView, value])
+
+  return (
+    <span>
+      {count.toLocaleString()}{suffix}
+    </span>
+  )
+}
 
 export function StatsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="stats" className="relative py-16 px-4" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+    <section id="stats" className="relative py-10 px-4" ref={ref}>
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="relative p-8 md:p-12 rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(201,168,76,0.2)]"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f1e3d] to-[#0a1628] border border-[rgba(201,168,76,0.15)]"
         >
-          <div className="grid md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <div key={stat.label} className="relative text-center">
-                {/* Divider */}
-                {index > 0 && (
-                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-16 w-px bg-gradient-to-b from-transparent via-[rgba(201,168,76,0.3)] to-transparent" />
-                )}
-                
-                <div className="font-serif text-4xl md:text-5xl font-bold text-[#c9a84c] mb-2">
-                  <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2.5} />
-                </div>
-                <div className="text-[#8892a4] text-sm md:text-base">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(201,168,76,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(201,168,76,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-[#c9a84c]/5 to-transparent blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-[#1a3a6e]/20 to-transparent blur-3xl" />
+
+          <div className="relative p-6 md:p-8">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <motion.h3
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="font-serif text-xl md:text-2xl font-bold text-[#f0f4ff] mb-1"
+              >
+                Trusted by Thousands
+              </motion.h3>
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                className="text-[#8892a4] text-sm"
+              >
+                Making legal help accessible across India
+              </motion.p>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.15 + index * 0.08 }}
+                  className="relative text-center"
+                >
+                  {/* Icon */}
+                  <div className="inline-flex p-2 rounded-lg bg-[rgba(201,168,76,0.1)] mb-3">
+                    <stat.icon className="w-5 h-5 text-[#c9a84c]" />
+                  </div>
+
+                  {/* Number */}
+                  <div className="font-serif text-2xl md:text-3xl font-bold text-[#c9a84c] mb-0.5">
+                    <AnimatedNumber value={stat.value} suffix={stat.suffix} isInView={isInView} />
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-[#f0f4ff] font-medium text-xs md:text-sm mb-0.5">
+                    {stat.label}
+                  </div>
+                  <div className="text-[#8892a4] text-[10px] hidden md:block">
+                    {stat.description}
+                  </div>
+
+                  {/* Divider for desktop */}
+                  {index < stats.length - 1 && (
+                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-px bg-gradient-to-b from-transparent via-[rgba(201,168,76,0.2)] to-transparent" />
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

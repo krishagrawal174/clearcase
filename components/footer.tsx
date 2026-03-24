@@ -78,8 +78,8 @@ export function Footer() {
             <h4 className="font-semibold text-[#f0f4ff] mb-4">Product</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/chat" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
-                  Legal Chat
+                <Link href="/get-help" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
+                  Get Help
                 </Link>
               </li>
               <li>
@@ -88,8 +88,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
-                  Lawyer Portal
+                <Link href="/book-lawyer" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
+                  Book a Lawyer
                 </Link>
               </li>
               <li>
@@ -129,7 +129,7 @@ export function Footer() {
                 </button>
               </li>
               <li>
-                <Link href="/chat" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
+                <Link href="/get-help" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
                   Get Started
                 </Link>
               </li>
