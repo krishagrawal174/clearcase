@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 import { Scale, FileText, Car, Briefcase, ArrowRight } from 'lucide-react'
 
 const features = [
@@ -10,24 +11,28 @@ const features = [
     title: 'Divorce Guidance',
     description: 'Complete step-by-step guidance under Hindu Marriage Act & Special Marriage Act. Know your rights instantly.',
     gradient: 'from-[#c9a84c] to-[#e8d48a]',
+    href: '/chat?topic=divorce',
   },
   {
     icon: FileText,
     title: 'Document Checker',
     description: 'Never be caught unprepared. Get exact document checklists for passport, license, property and 20+ more.',
     gradient: 'from-[#7b61ff] to-[#a78bfa]',
+    href: '/documents',
   },
   {
     icon: Car,
     title: 'Challan Advisor',
     description: 'Find the fastest, cheapest way to resolve any traffic challan across all Indian states.',
     gradient: 'from-[#14b8a6] to-[#5eead4]',
+    href: '/chat?topic=challan',
   },
   {
     icon: Briefcase,
     title: 'Lawyer Suite',
     description: 'Professional tools for advocates — client management, section finder, and AI case analysis.',
     gradient: 'from-[#f97316] to-[#fb923c]',
+    href: '/dashboard',
   },
 ]
 
@@ -110,13 +115,13 @@ export function FeaturesSection() {
               </p>
 
               {/* Learn more link */}
-              <motion.a
-                href="#"
+              <Link
+                href={feature.href}
                 className="relative inline-flex items-center gap-2 text-[#c9a84c] font-medium text-sm group/link"
               >
                 Learn more
                 <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-              </motion.a>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
