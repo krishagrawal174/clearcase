@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { ChatSidebar } from '@/components/chat/chat-sidebar'
 import { ChatMessages, type Message } from '@/components/chat/chat-messages'
@@ -100,12 +101,31 @@ Or select a specific topic from the sidebar for specialized tools and guidance.
 How can I assist you today?`,
 }
 
-export default function ChatPage() {
-  const [activeTopic, setActiveTopic] = useState('general')
+function ChatPageContent() {
+  const searchParams = useSearchParams()
+  const urlTopic = searchParams.get('topic')
+  const validTopics = ['divorce', 'challan', 'documents', 'property', 'family', 'general']
+  const initialTopic = urlTopic && validTopics.includes(urlTopic) ? urlTopic : 'general'
+  
+  const [activeTopic, setActiveTopic] = useState(initialTopic)
   const [messages, setMessages] = useState<Message[]>([])
   const [isTyping, setIsTyping] = useState(false)
   const [showWelcome, setShowWelcome] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  // Handle URL topic parameter changes
+  useEffect(() => {
+    if (urlTopic && validTopics.includes(urlTopic) && urlTopic !== activeTopic) {
+      setActiveTopic(urlTopic)
+      const currentWelcome = topicWelcomeMessages[urlTopic] || topicWelcomeMessages.general
+      setMessages([{
+        id: 'welcome',
+        role: 'assistant',
+        content: currentWelcome,
+      }])
+      setShowWelcome(false)
+    }
+  }, [urlTopic])
 
   // Typewriter effect for welcome message
   useEffect(() => {
@@ -261,5 +281,17 @@ export default function ChatPage() {
       <MobileNav />
       </div>
     </div>
+  )
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-screen bg-[#050d1f]">
+        <div className="text-[#c9a84c]">Loading...</div>
+      </div>
+    }>
+      <ChatPageContent />
+    </Suspense>
   )
 }

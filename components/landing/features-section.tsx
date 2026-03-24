@@ -11,7 +11,7 @@ const features = [
     title: 'Divorce Guidance',
     description: 'Complete step-by-step guidance under Hindu Marriage Act & Special Marriage Act. Know your rights instantly.',
     gradient: 'from-[#c9a84c] to-[#e8d48a]',
-    href: '/chat',
+    href: '/chat?topic=divorce',
   },
   {
     icon: FileText,
@@ -25,7 +25,7 @@ const features = [
     title: 'Challan Advisor',
     description: 'Find the fastest, cheapest way to resolve any traffic challan across all Indian states.',
     gradient: 'from-[#14b8a6] to-[#5eead4]',
-    href: '/chat',
+    href: '/chat?topic=challan',
   },
   {
     icon: Briefcase,
