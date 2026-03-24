@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/chat', label: 'Legal Chat' },
   { href: '/documents', label: 'Documents' },
   { href: '/ipc', label: 'IPC Finder' },
+  { href: '/book-lawyer', label: 'Book a Lawyer' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/dashboard', label: 'Lawyer Portal' },
 ]

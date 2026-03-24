@@ -93,6 +93,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/book-lawyer" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
+                  Book a Lawyer
+                </Link>
+              </li>
+              <li>
                 <Link href="/pricing" className="text-[#8892a4] hover:text-[#c9a84c] transition-colors text-sm">
                   Pricing
                 </Link>
