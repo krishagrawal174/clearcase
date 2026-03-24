@@ -12,9 +12,9 @@ const features = [
     description: 'Complete guidance under Hindu Marriage Act & Special Marriage Act. Understand alimony, custody & property rights.',
     stat: '2,500+',
     statLabel: 'Cases Guided',
-    gradient: 'from-[#c9a84c] to-[#e8d48a]',
+    gradient: 'from-[#6366f1] to-[#8b5cf6]',
     href: '/chat?topic=divorce',
-    iconBg: 'bg-[#c9a84c]/10',
+    iconBg: 'bg-[#6366f1]/10',
   },
   {
     icon: FileText,
@@ -22,9 +22,9 @@ const features = [
     description: 'Never be caught unprepared. Get exact document checklists for passport, license, property and government services.',
     stat: '50+',
     statLabel: 'Document Types',
-    gradient: 'from-[#6366f1] to-[#818cf8]',
+    gradient: 'from-[#8b5cf6] to-[#a78bfa]',
     href: '/documents',
-    iconBg: 'bg-[#6366f1]/10',
+    iconBg: 'bg-[#8b5cf6]/10',
   },
   {
     icon: Car,
@@ -91,13 +91,13 @@ export function FeaturesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.2)] mb-4">
-            <span className="text-[#c9a84c] text-xs font-medium">Comprehensive Legal Tools</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.2)] mb-4">
+            <span className="text-[#6366f1] text-xs font-medium">Comprehensive Legal Tools</span>
           </div>
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#f0f4ff] mb-2">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
             Everything You Need
           </h2>
-          <p className="text-[#8892a4] text-base max-w-2xl mx-auto">
+          <p className="text-[#94a3b8] text-base max-w-2xl mx-auto">
             Powerful legal tools designed specifically for modern India
           </p>
         </motion.div>
@@ -116,31 +116,31 @@ export function FeaturesSection() {
               className="group relative"
             >
               <Link href={feature.href}>
-                <div className="relative p-5 rounded-xl bg-[#0a1628] border border-[rgba(255,255,255,0.06)] transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:shadow-lg hover:shadow-[rgba(201,168,76,0.05)] h-full">
+                <div className="relative p-5 rounded-xl bg-[#111118] border border-[#1e1e2e] transition-all duration-300 hover:border-[rgba(99,102,241,0.3)] hover:shadow-lg hover:shadow-[rgba(99,102,241,0.05)] h-full">
                   {/* Hover glow effect */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[rgba(201,168,76,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[rgba(99,102,241,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   {/* Header with icon and stat */}
                   <div className="relative flex items-start justify-between mb-4">
                     <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${feature.gradient}`}>
-                      <feature.icon className="w-5 h-5 text-[#050d1f]" />
+                      <feature.icon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-bold text-[#c9a84c]">{feature.stat}</div>
-                      <div className="text-[10px] text-[#8892a4]">{feature.statLabel}</div>
+                      <div className="text-lg font-bold text-[#6366f1]">{feature.stat}</div>
+                      <div className="text-[10px] text-[#94a3b8]">{feature.statLabel}</div>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="relative font-serif text-lg font-bold text-[#f0f4ff] mb-2">
+                  <h3 className="relative font-serif text-lg font-bold text-white mb-2">
                     {feature.title}
                   </h3>
-                  <p className="relative text-[#8892a4] leading-relaxed text-sm mb-4">
+                  <p className="relative text-[#94a3b8] leading-relaxed text-sm mb-4">
                     {feature.description}
                   </p>
 
                   {/* Learn more link */}
-                  <div className="relative inline-flex items-center gap-1.5 text-[#c9a84c] font-medium text-xs group/link">
+                  <div className="relative inline-flex items-center gap-1.5 text-[#6366f1] font-medium text-xs group/link">
                     <span>Get Started</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -160,11 +160,11 @@ export function FeaturesSection() {
           {additionalFeatures.map((item) => (
             <div
               key={item.label}
-              className="p-3 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] text-center"
+              className="p-3 rounded-lg bg-[#111118] border border-[#1e1e2e] text-center"
             >
-              <item.icon className="w-4 h-4 text-[#c9a84c] mx-auto mb-1.5" />
-              <div className="text-[#f0f4ff] font-semibold text-xs mb-0.5">{item.value}</div>
-              <div className="text-[#8892a4] text-[10px]">{item.label}</div>
+              <item.icon className="w-4 h-4 text-[#6366f1] mx-auto mb-1.5" />
+              <div className="text-white font-semibold text-xs mb-0.5">{item.value}</div>
+              <div className="text-[#94a3b8] text-[10px]">{item.label}</div>
             </div>
           ))}
         </motion.div>

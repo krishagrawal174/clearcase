@@ -111,7 +111,7 @@ function ChatPageContent() {
   const [messages, setMessages] = useState<Message[]>([])
   const [isTyping, setIsTyping] = useState(false)
   const [showWelcome, setShowWelcome] = useState(true)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
 
   // Handle URL topic parameter changes
   useEffect(() => {
@@ -156,9 +156,11 @@ function ChatPageContent() {
     }
   }, [])
 
-  // Auto-scroll to bottom
+  // Scroll to bottom of messages container only (not page scroll)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight
+    }
   }, [messages, isTyping])
 
   const handleSend = async (content: string) => {
@@ -228,57 +230,63 @@ function ChatPageContent() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-[#050d1f]">
+    <div className="flex flex-col h-screen bg-[#0a0a0f] overflow-hidden">
       <CustomCursor />
       <Navbar />
       
       {/* Main Content Area */}
-      <div className="flex flex-1 pt-16 md:pt-20">
-      {/* Sidebar */}
-      <ChatSidebar
-        activeTopic={activeTopic}
-        onTopicChange={handleTopicChange}
-        onNewChat={handleNewChat}
-      />
+      <div className="flex flex-1 pt-16 md:pt-20 overflow-hidden">
+        {/* Sidebar */}
+        <ChatSidebar
+          activeTopic={activeTopic}
+          onTopicChange={handleTopicChange}
+          onNewChat={handleNewChat}
+        />
 
-      {/* Main Chat Area */}
-      <main className="flex-1 flex flex-col h-full pb-16 md:pb-0">
-        {/* Header */}
-        <header className="flex items-center justify-between px-6 py-4 border-b border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.02)]">
-          <div className="flex items-center gap-3">
-            <h1 className="font-serif text-lg font-semibold text-[#f0f4ff]">
-              {topicLabels[activeTopic]}
-            </h1>
-            <motion.span
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(123,97,255,0.15)] border border-[rgba(123,97,255,0.3)] text-xs font-medium text-[#7b61ff]"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              AI Active
-            </motion.span>
+        {/* Main Chat Area */}
+        <main className="flex-1 flex flex-col h-full pb-16 md:pb-0 overflow-hidden">
+          {/* Header - Fixed */}
+          <header className="flex-shrink-0 flex items-center justify-between px-6 py-4 border-b border-[#1e1e2e] bg-[#0a0a0f]">
+            <div className="flex items-center gap-3">
+              <h1 className="font-serif text-lg font-semibold text-white">
+                {topicLabels[activeTopic]}
+              </h1>
+              <motion.span
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(99,102,241,0.15)] border border-[rgba(99,102,241,0.3)] text-xs font-medium text-[#6366f1]"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                AI Active
+              </motion.span>
+            </div>
+          </header>
+
+          {/* Topic-specific tools - Fixed at top */}
+          <div className="flex-shrink-0">
+            {activeTopic === 'divorce' && <AlimonyCalculator />}
+            {activeTopic === 'challan' && <ChallanEstimator />}
+            {activeTopic === 'documents' && <DocumentSelector />}
+            {activeTopic === 'property' && <PropertySelector />}
+            {activeTopic === 'family' && <FamilyLawSelector />}
           </div>
-        </header>
 
-        {/* Messages Area with Dot Grid */}
-        <div className="flex-1 overflow-hidden relative dot-grid">
-          <ChatMessages messages={messages} isTyping={isTyping} />
-          <div ref={messagesEndRef} />
-        </div>
+          {/* Messages Area - Scrollable container with fixed height */}
+          <div 
+            ref={messagesContainerRef}
+            className="flex-1 overflow-y-auto relative dot-grid min-h-0"
+          >
+            <ChatMessages messages={messages} isTyping={isTyping} />
+          </div>
 
-        {/* Topic-specific tools */}
-        {activeTopic === 'divorce' && <AlimonyCalculator />}
-        {activeTopic === 'challan' && <ChallanEstimator />}
-        {activeTopic === 'documents' && <DocumentSelector />}
-        {activeTopic === 'property' && <PropertySelector />}
-        {activeTopic === 'family' && <FamilyLawSelector />}
+          {/* Input - Fixed at bottom */}
+          <div className="flex-shrink-0">
+            <ChatInput onSend={handleSend} disabled={isTyping} />
+          </div>
+        </main>
 
-        {/* Input */}
-        <ChatInput onSend={handleSend} disabled={isTyping} />
-      </main>
-
-      {/* Mobile Navigation */}
-      <MobileNav />
+        {/* Mobile Navigation */}
+        <MobileNav />
       </div>
     </div>
   )
@@ -287,8 +295,8 @@ function ChatPageContent() {
 export default function ChatPage() {
   return (
     <Suspense fallback={
-      <div className="flex items-center justify-center h-screen bg-[#050d1f]">
-        <div className="text-[#c9a84c]">Loading...</div>
+      <div className="flex items-center justify-center h-screen bg-[#0a0a0f]">
+        <div className="text-[#6366f1]">Loading...</div>
       </div>
     }>
       <ChatPageContent />

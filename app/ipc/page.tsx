@@ -333,7 +333,7 @@ export default function IPCFinderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050d1f] pb-20 md:pb-0">
+    <div className="min-h-screen bg-[#0a0a0f] pb-20 md:pb-0">
       <CustomCursor />
       <AnimatedBackground />
       <Navbar />
@@ -346,18 +346,18 @@ export default function IPCFinderPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.2)] mb-6">
-              <BookOpen className="w-4 h-4 text-[#c9a84c]" />
-              <span className="text-sm text-[#c9a84c] font-medium">Indian Legal Database</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.2)] mb-6">
+              <BookOpen className="w-4 h-4 text-[#6366f1]" />
+              <span className="text-sm text-[#6366f1] font-medium">Indian Legal Database</span>
             </div>
             
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#f0f4ff] mb-4">
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               IPC & BNS Section{' '}
-              <span className="bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] bg-clip-text text-transparent">
+              <span className="text-[#6366f1]">
                 Finder
               </span>
             </h1>
-            <p className="text-lg text-[#8892a4] max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-[#94a3b8] max-w-3xl mx-auto mb-8">
               Compare Indian Penal Code (1860) with Bharatiya Nyaya Sanhita (2023). 
               Find sections, punishments, and see what changed in the new criminal law.
             </p>

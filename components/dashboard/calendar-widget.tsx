@@ -44,25 +44,25 @@ const upcomingHearings = [
 
 export function CalendarWidget() {
   return (
-    <div className="rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] overflow-hidden">
+    <div className="rounded-2xl bg-[#111118] border border-[#1e1e2e] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between p-5 border-b border-[rgba(255,255,255,0.08)]">
+      <div className="flex items-center justify-between p-5 border-b border-[#1e1e2e]">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#c9a84c] to-[#e8d48a]">
-            <Calendar className="w-5 h-5 text-[#050d1f]" />
+          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#6366f1] to-[#8b5cf6]">
+            <Calendar className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="font-serif font-bold text-[#f0f4ff]">Upcoming Hearings</h3>
-            <p className="text-xs text-[#8892a4]">This week</p>
+            <h3 className="font-serif font-bold text-white">Upcoming Hearings</h3>
+            <p className="text-xs text-[#94a3b8]">This week</p>
           </div>
         </div>
-        <span className="px-2.5 py-1 rounded-full bg-[#c9a84c]/20 text-[#c9a84c] text-xs font-medium">
+        <span className="px-2.5 py-1 rounded-full bg-[#6366f1]/20 text-[#6366f1] text-xs font-medium">
           {upcomingHearings.length} scheduled
         </span>
       </div>
 
       {/* Hearings List */}
-      <div className="divide-y divide-[rgba(255,255,255,0.05)]">
+      <div className="divide-y divide-[#1e1e2e]">
         {upcomingHearings.map((hearing, index) => (
           <motion.div
             key={hearing.id}
@@ -75,19 +75,19 @@ export function CalendarWidget() {
               <div className={`w-1 h-full min-h-[60px] rounded-full ${hearing.color}`} />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="font-medium text-[#f0f4ff] truncate">{hearing.client}</span>
+                  <span className="font-medium text-white truncate">{hearing.client}</span>
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                     hearing.date === 'Today' 
                       ? 'bg-red-500/20 text-red-400' 
                       : hearing.date === 'Tomorrow'
                       ? 'bg-orange-500/20 text-orange-400'
-                      : 'bg-[rgba(255,255,255,0.1)] text-[#8892a4]'
+                      : 'bg-[rgba(255,255,255,0.1)] text-[#94a3b8]'
                   }`}>
                     {hearing.date}
                   </span>
                 </div>
-                <p className="text-sm text-[#8892a4] mb-2">{hearing.caseType}</p>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-[#8892a4]">
+                <p className="text-sm text-[#94a3b8] mb-2">{hearing.caseType}</p>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-[#94a3b8]">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     {hearing.time}
@@ -104,8 +104,8 @@ export function CalendarWidget() {
       </div>
 
       {/* View All Button */}
-      <div className="p-4 border-t border-[rgba(255,255,255,0.08)]">
-        <button className="w-full py-2.5 rounded-xl border border-[rgba(201,168,76,0.3)] text-[#c9a84c] text-sm font-medium hover:bg-[rgba(201,168,76,0.1)] transition-colors">
+      <div className="p-4 border-t border-[#1e1e2e]">
+        <button className="w-full py-2.5 rounded-xl border border-[rgba(99,102,241,0.3)] text-[#6366f1] text-sm font-medium hover:bg-[rgba(99,102,241,0.1)] transition-colors">
           View Full Calendar
         </button>
       </div>

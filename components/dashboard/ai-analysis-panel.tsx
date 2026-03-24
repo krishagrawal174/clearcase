@@ -31,15 +31,15 @@ export function AIAnalysisPanel() {
   }
 
   return (
-    <div className="rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] overflow-hidden">
+    <div className="rounded-2xl bg-[#111118] border border-[#1e1e2e] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-3 p-5 border-b border-[rgba(255,255,255,0.08)]">
-        <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#7b61ff] to-[#a78bfa]">
+      <div className="flex items-center gap-3 p-5 border-b border-[#1e1e2e]">
+        <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#6366f1]">
           <Brain className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="font-serif font-bold text-[#f0f4ff]">AI Case Analyzer</h3>
-          <p className="text-xs text-[#8892a4]">Get instant legal insights</p>
+          <h3 className="font-serif font-bold text-white">AI Case Analyzer</h3>
+          <p className="text-xs text-[#94a3b8]">Get instant legal insights</p>
         </div>
       </div>
 
@@ -54,24 +54,24 @@ export function AIAnalysisPanel() {
             >
               {/* Input Area */}
               <div className="mb-4">
-                <label className="block text-sm text-[#8892a4] mb-2">Enter Case Facts</label>
+                <label className="block text-sm text-[#94a3b8] mb-2">Enter Case Facts</label>
                 <textarea
                   value={caseFacts}
                   onChange={(e) => setCaseFacts(e.target.value)}
                   placeholder="Describe the case situation, key facts, and any relevant details..."
-                  className="w-full h-32 px-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] placeholder-[#8892a4] text-sm resize-none focus:outline-none focus:border-[rgba(123,97,255,0.4)] transition-colors"
+                  className="w-full h-32 px-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[#1e1e2e] text-white placeholder-[#94a3b8] text-sm resize-none focus:outline-none focus:border-[rgba(99,102,241,0.4)] transition-colors"
                 />
               </div>
 
               {/* Quick Prompts */}
               <div className="mb-4">
-                <p className="text-xs text-[#8892a4] mb-2">Quick prompts:</p>
+                <p className="text-xs text-[#94a3b8] mb-2">Quick prompts:</p>
                 <div className="flex flex-wrap gap-2">
                   {['Divorce case', 'Property dispute', 'Domestic violence', 'Cheque bounce'].map((prompt) => (
                     <button
                       key={prompt}
                       onClick={() => setCaseFacts(prev => prev + (prev ? ' ' : '') + prompt + ' case facts...')}
-                      className="px-3 py-1.5 rounded-lg bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-xs text-[#8892a4] hover:text-[#f0f4ff] hover:border-[rgba(123,97,255,0.3)] transition-colors"
+                      className="px-3 py-1.5 rounded-lg bg-[rgba(255,255,255,0.04)] border border-[#1e1e2e] text-xs text-[#94a3b8] hover:text-white hover:border-[rgba(99,102,241,0.3)] transition-colors"
                     >
                       {prompt}
                     </button>
@@ -85,7 +85,7 @@ export function AIAnalysisPanel() {
                 disabled={!caseFacts.trim() || isAnalyzing}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#7b61ff] to-[#a78bfa] text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isAnalyzing ? (
                   <>
@@ -109,12 +109,12 @@ export function AIAnalysisPanel() {
               {/* Results Header */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#7b61ff]" />
-                  <span className="text-sm font-medium text-[#f0f4ff]">AI Suggestions</span>
+                  <Sparkles className="w-4 h-4 text-[#6366f1]" />
+                  <span className="text-sm font-medium text-white">AI Suggestions</span>
                 </div>
                 <button
                   onClick={handleReset}
-                  className="text-xs text-[#8892a4] hover:text-[#f0f4ff] transition-colors"
+                  className="text-xs text-[#94a3b8] hover:text-white transition-colors"
                 >
                   New Analysis
                 </button>
@@ -128,35 +128,35 @@ export function AIAnalysisPanel() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-3 rounded-xl bg-[rgba(123,97,255,0.1)] border border-[rgba(123,97,255,0.2)]"
+                    className="p-3 rounded-xl bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.2)]"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-2">
-                        <BookOpen className="w-3.5 h-3.5 text-[#7b61ff]" />
-                        <span className="font-mono text-sm font-semibold text-[#7b61ff]">
+                        <BookOpen className="w-3.5 h-3.5 text-[#6366f1]" />
+                        <span className="font-mono text-sm font-semibold text-[#6366f1]">
                           {suggestion.section}
                         </span>
                       </div>
                       <span className={`text-xs px-2 py-0.5 rounded-full ${
                         suggestion.relevance === 'High'
-                          ? 'bg-green-500/20 text-green-400'
-                          : 'bg-yellow-500/20 text-yellow-400'
+                          ? 'bg-[#10b981]/20 text-[#10b981]'
+                          : 'bg-[#6366f1]/20 text-[#6366f1]'
                       }`}>
                         {suggestion.relevance}
                       </span>
                     </div>
-                    <p className="text-xs text-[#8892a4]">{suggestion.title}</p>
+                    <p className="text-xs text-[#94a3b8]">{suggestion.title}</p>
                   </motion.div>
                 ))}
               </div>
 
               {/* Actions */}
               <div className="flex gap-2">
-                <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-[rgba(201,168,76,0.3)] text-[#c9a84c] text-sm font-medium hover:bg-[rgba(201,168,76,0.1)] transition-colors">
+                <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-[rgba(99,102,241,0.3)] text-[#6366f1] text-sm font-medium hover:bg-[rgba(99,102,241,0.1)] transition-colors">
                   <Scale className="w-4 h-4" />
                   Full Report
                 </button>
-                <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl gold-shimmer text-[#050d1f] text-sm font-medium">
+                <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#6366f1] hover:bg-[#8b5cf6] text-white text-sm font-medium transition-colors">
                   <Send className="w-4 h-4" />
                   Save to Case
                 </button>

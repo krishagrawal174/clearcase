@@ -4,36 +4,39 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #050d1f;
-  --foreground: #f0f4ff;
-  --card: rgba(255, 255, 255, 0.04);
-  --card-foreground: #f0f4ff;
-  --popover: rgba(255, 255, 255, 0.04);
-  --popover-foreground: #f0f4ff;
-  --primary: #c9a84c;
-  --primary-foreground: #050d1f;
-  --secondary: #7b61ff;
-  --secondary-foreground: #f0f4ff;
+  --background: #0a0a0f;
+  --foreground: #f8fafc;
+  --card: #111118;
+  --card-foreground: #f8fafc;
+  --popover: #111118;
+  --popover-foreground: #f8fafc;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #8b5cf6;
+  --secondary-foreground: #f8fafc;
   --muted: rgba(255, 255, 255, 0.08);
-  --muted-foreground: #8892a4;
-  --accent: #7b61ff;
-  --accent-foreground: #f0f4ff;
+  --muted-foreground: #94a3b8;
+  --accent: #8b5cf6;
+  --accent-foreground: #f8fafc;
   --destructive: #ef4444;
-  --destructive-foreground: #f0f4ff;
-  --border: rgba(201, 168, 76, 0.2);
+  --destructive-foreground: #f8fafc;
+  --border: #1e1e2e;
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #c9a84c;
+  --ring: #6366f1;
   --radius: 0.75rem;
   
-  /* Custom ClearCase colors */
-  --gold: #c9a84c;
-  --gold-glow: rgba(201, 168, 76, 0.3);
-  --purple: #7b61ff;
-  --purple-glow: rgba(123, 97, 255, 0.3);
-  --text-primary: #f0f4ff;
-  --text-secondary: #8892a4;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-border: rgba(255, 255, 255, 0.08);
+  /* Custom ClearCase colors - New Premium Indigo Theme */
+  --indigo: #6366f1;
+  --indigo-hover: #8b5cf6;
+  --indigo-glow: rgba(99, 102, 241, 0.3);
+  --violet: #8b5cf6;
+  --violet-glow: rgba(139, 92, 246, 0.3);
+  --success: #10b981;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --surface: #111118;
+  --surface-border: #1e1e2e;
 }
 
 @theme inline {
@@ -63,10 +66,12 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-gold: var(--gold);
-  --color-gold-glow: var(--gold-glow);
-  --color-purple: var(--purple);
-  --color-purple-glow: var(--purple-glow);
+  --color-indigo: var(--indigo);
+  --color-indigo-hover: var(--indigo-hover);
+  --color-indigo-glow: var(--indigo-glow);
+  --color-violet: var(--violet);
+  --color-violet-glow: var(--violet-glow);
+  --color-success: var(--success);
 }
 
 @layer base {
@@ -82,13 +87,13 @@
 .custom-cursor {
   width: 8px;
   height: 8px;
-  background: var(--gold);
+  background: var(--indigo);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.15s ease-out;
-  box-shadow: 0 0 10px var(--gold-glow), 0 0 20px var(--gold-glow);
+  box-shadow: 0 0 10px var(--indigo-glow), 0 0 20px var(--indigo-glow);
 }
 
 /* Animated background blobs */
@@ -133,26 +138,33 @@
   animation-delay: -14s;
 }
 
-/* Gold shimmer effect */
+/* Indigo shimmer effect */
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 
-.gold-shimmer {
+.indigo-shimmer {
   background: linear-gradient(
     90deg,
-    var(--gold) 0%,
-    #e8d48a 25%,
-    var(--gold) 50%,
-    #e8d48a 75%,
-    var(--gold) 100%
+    var(--indigo) 0%,
+    var(--violet) 50%,
+    var(--indigo) 100%
   );
   background-size: 200% auto;
 }
 
-.gold-shimmer:hover {
+.indigo-shimmer:hover {
   animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Keep gold-shimmer class but make it indigo for backwards compatibility */
+.gold-shimmer {
+  background: var(--indigo);
+}
+
+.gold-shimmer:hover {
+  background: var(--indigo-hover);
 }
 
 /* Glassmorphism card */
@@ -166,14 +178,21 @@
 .glass-card-gold {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius);
+}
+
+.glass-card-indigo {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
   border-radius: var(--radius);
 }
 
 /* Pulse animation for badges */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px var(--purple-glow); }
-  50% { box-shadow: 0 0 20px var(--purple-glow), 0 0 30px var(--purple-glow); }
+  0%, 100% { box-shadow: 0 0 5px var(--indigo-glow); }
+  50% { box-shadow: 0 0 20px var(--indigo-glow), 0 0 30px var(--indigo-glow); }
 }
 
 .pulse-glow {
@@ -199,7 +218,7 @@
 .typing-cursor::after {
   content: '|';
   animation: blink 1s infinite;
-  color: var(--gold);
+  color: var(--indigo);
 }
 
 /* Dot grid pattern */
@@ -219,10 +238,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 168, 76, 0.3);
+  background: rgba(99, 102, 241, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(201, 168, 76, 0.5);
+  background: rgba(99, 102, 241, 0.5);
 }

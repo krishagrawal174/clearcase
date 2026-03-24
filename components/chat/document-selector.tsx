@@ -273,8 +273,8 @@ export function DocumentSelector({ onSelectDocument }: DocumentSelectorProps) {
 
                     {/* Notes */}
                     {selectedDocumentData.notes && (
-                      <div className="p-2 rounded-lg bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)]">
-                        <p className="text-xs text-[#c9a84c]">Note: {selectedDocumentData.notes}</p>
+                      <div className="p-2 rounded-lg bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.25)]">
+                        <p className="text-xs text-[#6366f1]">Note: {selectedDocumentData.notes}</p>
                       </div>
                     )}
                   </motion.div>

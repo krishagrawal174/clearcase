@@ -36,11 +36,11 @@ export function HeroSection() {
   return (
     <section className="relative pt-20 pb-12 overflow-hidden">
       {/* Subtle grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(201,168,76,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(201,168,76,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-[#c9a84c]/10 to-transparent blur-[120px]"
+        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-[#6366f1]/10 to-transparent blur-[120px]"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -52,7 +52,7 @@ export function HeroSection() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-l from-[#1a3a6e]/30 to-transparent blur-[100px]"
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-l from-[#8b5cf6]/30 to-transparent blur-[100px]"
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.4, 0.6, 0.4],
@@ -78,9 +78,9 @@ export function HeroSection() {
             variants={itemVariants}
             className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
           >
-            <span className="text-[#f0f4ff]">Legal Clarity,</span>
+            <span className="text-white">Legal Clarity,</span>
             <br />
-            <span className="bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] bg-clip-text text-transparent">
+            <span className="text-[#6366f1]">
               For Every Indian.
             </span>
           </motion.h1>
@@ -88,7 +88,7 @@ export function HeroSection() {
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg text-[#8892a4] max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
+            className="text-base md:text-lg text-[#94a3b8] max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
           >
             Instant AI-powered guidance on divorce, challans, property disputes and more. 
             In English or Hindi. Available 24/7.
@@ -100,7 +100,7 @@ export function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative w-full sm:w-auto h-10 px-5 rounded-lg font-medium text-sm text-[#050d1f] gold-shimmer shadow-md shadow-[rgba(201,168,76,0.2)] flex items-center justify-center gap-1.5"
+                className="relative w-full sm:w-auto h-10 px-5 rounded-lg font-medium text-sm text-white bg-[#6366f1] hover:bg-[#8b5cf6] shadow-md shadow-[rgba(99,102,241,0.3)] flex items-center justify-center gap-1.5 transition-colors"
               >
                 Start Free Consultation
                 <span className="text-sm">→</span>
@@ -110,7 +110,7 @@ export function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto h-10 px-5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[#c9a84c] bg-transparent transition-all duration-300 flex items-center justify-center gap-1.5 hover:bg-[#c9a84c]/10"
+                className="w-full sm:w-auto h-10 px-5 rounded-lg font-medium text-sm text-[#6366f1] border border-[#6366f1] bg-transparent transition-all duration-300 flex items-center justify-center gap-1.5 hover:bg-[#6366f1]/10"
               >
                 I'm a Lawyer
               </motion.button>
@@ -120,18 +120,18 @@ export function HeroSection() {
           {/* Trust Badges */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center lg:justify-start gap-4 text-[#8892a4] text-xs"
+            className="flex flex-wrap justify-center lg:justify-start gap-4 text-[#94a3b8] text-xs"
           >
             <div className="flex items-center gap-2">
-              <Lock className="w-4 h-4 text-[#c9a84c]" />
+              <Lock className="w-4 h-4 text-[#6366f1]" />
               <span>100% Private</span>
             </div>
             <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-[#c9a84c]" />
+              <Zap className="w-4 h-4 text-[#6366f1]" />
               <span>Instant Answers</span>
             </div>
             <div className="flex items-center gap-2">
-              <Scale className="w-4 h-4 text-[#c9a84c]" />
+              <Scale className="w-4 h-4 text-[#6366f1]" />
               <span>India-specific Law</span>
             </div>
           </motion.div>
@@ -146,26 +146,26 @@ export function HeroSection() {
         >
           <div className="relative">
             {/* Glow effect behind chat */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#c9a84c]/20 to-[#1a3a6e]/20 blur-[60px] rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#6366f1]/20 to-[#8b5cf6]/20 blur-[60px] rounded-3xl" />
             
             {/* Chat Container */}
             <motion.div
-              className="relative bg-[#0a1628]/90 backdrop-blur-xl rounded-2xl border border-[rgba(201,168,76,0.2)] p-6 shadow-2xl"
+              className="relative bg-[#111118]/90 backdrop-blur-xl rounded-2xl border border-[#1e1e2e] p-6 shadow-2xl"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             >
               {/* Chat Header */}
-              <div className="flex items-center gap-3 pb-4 border-b border-[rgba(255,255,255,0.1)] mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#e8d48a] flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-[#050d1f]" />
+              <div className="flex items-center gap-3 pb-4 border-b border-[#1e1e2e] mb-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center">
+                  <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-[#f0f4ff] font-semibold">ClearCase AI</h4>
-                  <p className="text-[#8892a4] text-xs">Always here to help</p>
+                  <h4 className="text-white font-semibold">ClearCase AI</h4>
+                  <p className="text-[#94a3b8] text-xs">Always here to help</p>
                 </div>
                 <div className="ml-auto flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-green-400 text-xs">Online</span>
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+                  <span className="text-[#10b981] text-xs">Online</span>
                 </div>
               </div>
 
@@ -178,7 +178,7 @@ export function HeroSection() {
                   transition={{ delay: 1 }}
                   className="flex justify-end"
                 >
-                  <div className="max-w-[85%] bg-[#c9a84c] text-[#050d1f] rounded-2xl rounded-tr-sm px-4 py-3 text-sm">
+                  <div className="max-w-[85%] bg-[#6366f1] text-white rounded-2xl rounded-tr-sm px-4 py-3 text-sm">
                     {chatMessages[0].text}
                   </div>
                 </motion.div>
@@ -190,7 +190,7 @@ export function HeroSection() {
                   transition={{ delay: 2 }}
                   className="flex justify-start"
                 >
-                  <div className="max-w-[85%] bg-[#1a2a4a] text-[#f0f4ff] rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed">
+                  <div className="max-w-[85%] bg-[#1e1e2e] text-white rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed">
                     {chatMessages[1].text}
                   </div>
                 </motion.div>
@@ -200,39 +200,39 @@ export function HeroSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, 1, 0] }}
                   transition={{ delay: 3.5, duration: 2, repeat: Infinity }}
-                  className="flex items-center gap-2 text-[#8892a4] text-xs"
+                  className="flex items-center gap-2 text-[#94a3b8] text-xs"
                 >
                   <div className="flex gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                   <span>AI is typing...</span>
                 </motion.div>
               </div>
 
               {/* Input Area */}
-              <div className="flex items-center gap-3 p-3 bg-[#050d1f]/50 rounded-xl border border-[rgba(255,255,255,0.05)]">
+              <div className="flex items-center gap-3 p-3 bg-[#0a0a0f]/50 rounded-xl border border-[#1e1e2e]">
                 <input
                   type="text"
                   placeholder="Ask your legal question..."
-                  className="flex-1 bg-transparent text-[#f0f4ff] text-sm placeholder:text-[#8892a4] outline-none"
+                  className="flex-1 bg-transparent text-white text-sm placeholder:text-[#94a3b8] outline-none"
                   disabled
                 />
-                <button className="w-9 h-9 rounded-lg bg-[#c9a84c] flex items-center justify-center hover:bg-[#e8d48a] transition-colors">
-                  <Send className="w-4 h-4 text-[#050d1f]" />
+                <button className="w-9 h-9 rounded-lg bg-[#6366f1] flex items-center justify-center hover:bg-[#8b5cf6] transition-colors">
+                  <Send className="w-4 h-4 text-white" />
                 </button>
               </div>
             </motion.div>
 
             {/* Floating decorative elements */}
             <motion.div
-              className="absolute -top-4 -right-4 w-20 h-20 rounded-xl bg-gradient-to-br from-[#c9a84c]/20 to-transparent backdrop-blur-sm border border-[rgba(201,168,76,0.2)]"
+              className="absolute -top-4 -right-4 w-20 h-20 rounded-xl bg-gradient-to-br from-[#6366f1]/20 to-transparent backdrop-blur-sm border border-[#6366f1]/20"
               animate={{ rotate: [0, 10, 0], y: [0, -5, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             />
             <motion.div
-              className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full bg-gradient-to-br from-[#1a3a6e]/30 to-transparent backdrop-blur-sm border border-[rgba(26,58,110,0.3)]"
+              className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full bg-gradient-to-br from-[#8b5cf6]/30 to-transparent backdrop-blur-sm border border-[#8b5cf6]/30"
               animate={{ scale: [1, 1.1, 1], y: [0, 5, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
             />

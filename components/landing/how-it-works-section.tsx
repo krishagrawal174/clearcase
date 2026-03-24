@@ -39,13 +39,13 @@ export function HowItWorksSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.2)] mb-4">
-            <span className="text-[#c9a84c] text-xs font-medium">Simple 3-Step Process</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.2)] mb-4">
+            <span className="text-[#6366f1] text-xs font-medium">Simple 3-Step Process</span>
           </div>
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#f0f4ff] mb-2">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
             How It Works
           </h2>
-          <p className="text-[#8892a4] text-base max-w-2xl mx-auto">
+          <p className="text-[#94a3b8] text-base max-w-2xl mx-auto">
             Get legal clarity in minutes, not days
           </p>
         </motion.div>
@@ -53,7 +53,7 @@ export function HowItWorksSection() {
         {/* Steps */}
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(201,168,76,0.3)] to-transparent -translate-y-1/2" />
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(99,102,241,0.3)] to-transparent -translate-y-1/2" />
 
           <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
             {steps.map((step, index) => (
@@ -64,29 +64,29 @@ export function HowItWorksSection() {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="relative"
               >
-                <div className="relative p-5 rounded-xl bg-[rgba(255,255,255,0.02)] backdrop-blur-xl border border-[rgba(255,255,255,0.06)] text-center group hover:border-[rgba(201,168,76,0.3)] transition-all duration-300">
+                <div className="relative p-5 rounded-xl bg-[#111118] border border-[#1e1e2e] text-center group hover:border-[rgba(99,102,241,0.3)] transition-all duration-300">
                   {/* Number badge */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#050d1f] border border-[#c9a84c] flex items-center justify-center">
-                    <span className="text-[#c9a84c] text-[10px] font-bold">{step.number}</span>
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#0a0a0f] border border-[#6366f1] flex items-center justify-center">
+                    <span className="text-[#6366f1] text-[10px] font-bold">{step.number}</span>
                   </div>
 
                   {/* Icon */}
-                  <div className="inline-flex p-3 rounded-lg bg-gradient-to-br from-[#c9a84c]/20 to-[#c9a84c]/5 mb-4 mt-1 group-hover:from-[#c9a84c]/30 group-hover:to-[#c9a84c]/10 transition-all duration-300">
-                    <step.icon className="w-6 h-6 text-[#c9a84c]" />
+                  <div className="inline-flex p-3 rounded-lg bg-gradient-to-br from-[#6366f1]/20 to-[#6366f1]/5 mb-4 mt-1 group-hover:from-[#6366f1]/30 group-hover:to-[#6366f1]/10 transition-all duration-300">
+                    <step.icon className="w-6 h-6 text-[#6366f1]" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-serif text-base font-bold text-[#f0f4ff] mb-2">
+                  <h3 className="font-serif text-base font-bold text-white mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-[#8892a4] leading-relaxed text-xs">
+                  <p className="text-[#94a3b8] leading-relaxed text-xs">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Arrow for desktop */}
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-6 w-12 text-[#c9a84c]/30">
+                  <div className="hidden lg:block absolute top-1/2 -right-6 w-12 text-[#6366f1]/30">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>

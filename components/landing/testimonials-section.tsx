@@ -61,10 +61,10 @@ export function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#f0f4ff] mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Trusted by thousands
           </h2>
-          <p className="text-[#8892a4] text-lg">
+          <p className="text-[#94a3b8] text-lg">
             See what our users have to say
           </p>
         </motion.div>
@@ -81,24 +81,24 @@ export function TestimonialsSection() {
               key={testimonial.name}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className="relative p-6 md:p-8 rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] border-l-2 border-l-[#c9a84c]"
+              className="relative p-6 md:p-8 rounded-2xl bg-[#111118] border border-[#1e1e2e] border-l-2 border-l-[#6366f1]"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
+                  <Star key={i} className="w-4 h-4 fill-[#6366f1] text-[#6366f1]" />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="font-serif text-lg text-[#f0f4ff] italic leading-relaxed mb-6">
+              <p className="font-serif text-lg text-white italic leading-relaxed mb-6">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
               {/* Author */}
               <div>
-                <div className="font-semibold text-[#f0f4ff]">{testimonial.name}</div>
-                <div className="text-sm text-[#8892a4]">
+                <div className="font-semibold text-white">{testimonial.name}</div>
+                <div className="text-sm text-[#94a3b8]">
                   {testimonial.location} · {testimonial.type}
                 </div>
               </div>

@@ -21,7 +21,7 @@ const plans = [
       'Hindi language support',
       'Email support',
     ],
-    buttonStyle: 'gold',
+    buttonStyle: 'indigo',
   },
   {
     name: 'Lawyer Pro',
@@ -36,7 +36,7 @@ const plans = [
       'Priority support',
       '5 client profiles',
     ],
-    buttonStyle: 'purple',
+    buttonStyle: 'violet',
   },
   {
     name: 'Law Firm',
@@ -88,19 +88,19 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
   return (
     <motion.div
-      className="border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden bg-[rgba(255,255,255,0.02)]"
+      className="border border-[#1e1e2e] rounded-xl overflow-hidden bg-[#111118]"
       initial={false}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(255,255,255,0.03)] transition-colors"
+        className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(99,102,241,0.03)] transition-colors"
       >
-        <span className="text-[#f0f4ff] font-medium">{question}</span>
+        <span className="text-white font-medium">{question}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-5 h-5 text-[#8892a4]" />
+          <ChevronDown className="w-5 h-5 text-[#94a3b8]" />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -111,7 +111,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
-            <div className="px-5 pb-5 text-[#8892a4] leading-relaxed">
+            <div className="px-5 pb-5 text-[#94a3b8] leading-relaxed">
               {answer}
             </div>
           </motion.div>
@@ -123,7 +123,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function PricingPage() {
   return (
-    <main className="min-h-screen bg-[#050d1f] relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0a0f] relative overflow-hidden">
       <AnimatedBackground />
       <Navbar />
 
@@ -136,13 +136,13 @@ export default function PricingPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#f0f4ff] mb-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
               Simple, Transparent{' '}
-              <span className="bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] bg-clip-text text-transparent">
+              <span className="text-[#6366f1]">
                 Pricing
               </span>
             </h1>
-            <p className="text-lg text-[#8892a4] max-w-2xl mx-auto">
+            <p className="text-lg text-[#94a3b8] max-w-2xl mx-auto">
               Choose the plan that fits your needs. All plans include our core AI legal guidance.
             </p>
           </motion.div>
@@ -157,47 +157,47 @@ export default function PricingPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`relative rounded-2xl p-6 border ${
                   plan.badge
-                    ? 'border-[#c9a84c] bg-[rgba(201,168,76,0.05)]'
-                    : 'border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.02)]'
+                    ? 'border-[#6366f1] bg-[rgba(99,102,241,0.05)]'
+                    : 'border-[#1e1e2e] bg-[#111118]'
                 }`}
               >
                 {plan.badge && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="px-3 py-1 text-xs font-semibold bg-[#c9a84c] text-[#050d1f] rounded-full">
+                    <span className="px-3 py-1 text-xs font-semibold bg-[#6366f1] text-white rounded-full">
                       {plan.badge}
                     </span>
                   </div>
                 )}
 
                 <div className="text-center mb-6 pt-2">
-                  <h3 className="text-xl font-semibold text-[#f0f4ff] mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     {plan.name}
                   </h3>
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-2xl text-[#8892a4]">₹</span>
-                    <span className="text-4xl font-bold text-[#f0f4ff]">
+                    <span className="text-2xl text-[#94a3b8]">₹</span>
+                    <span className="text-4xl font-bold text-white">
                       {plan.price}
                     </span>
-                    <span className="text-[#8892a4]">/month</span>
+                    <span className="text-[#94a3b8]">/month</span>
                   </div>
                 </div>
 
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" />
-                      <span className="text-[#8892a4] text-sm">{feature}</span>
+                      <Check className="w-5 h-5 text-[#6366f1] flex-shrink-0 mt-0.5" />
+                      <span className="text-[#94a3b8] text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <button
                   className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
-                    plan.buttonStyle === 'gold'
-                      ? 'bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] text-[#050d1f] hover:shadow-lg hover:shadow-[rgba(201,168,76,0.3)]'
-                      : plan.buttonStyle === 'purple'
-                      ? 'bg-gradient-to-r from-[#7b61ff] via-[#9d8cff] to-[#7b61ff] text-white hover:shadow-lg hover:shadow-[rgba(123,97,255,0.3)]'
-                      : 'border border-[#c9a84c] text-[#c9a84c] bg-transparent hover:bg-[rgba(201,168,76,0.1)]'
+                    plan.buttonStyle === 'indigo'
+                      ? 'bg-[#6366f1] text-white hover:bg-[#8b5cf6] hover:shadow-lg hover:shadow-[rgba(99,102,241,0.3)]'
+                      : plan.buttonStyle === 'violet'
+                      ? 'bg-[#8b5cf6] text-white hover:bg-[#a78bfa] hover:shadow-lg hover:shadow-[rgba(139,92,246,0.3)]'
+                      : 'border border-[#6366f1] text-[#6366f1] bg-transparent hover:bg-[rgba(99,102,241,0.1)]'
                   }`}
                 >
                   Get Started
@@ -211,7 +211,7 @@ export default function PricingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-center text-[#8892a4] text-sm mb-24"
+            className="text-center text-[#94a3b8] text-sm mb-24"
           >
             All plans include a 7-day free trial. No credit card required.
           </motion.p>
@@ -222,7 +222,7 @@ export default function PricingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h2 className="font-serif text-3xl font-bold text-[#f0f4ff] text-center mb-10">
+            <h2 className="font-serif text-3xl font-bold text-white text-center mb-10">
               Frequently Asked Questions
             </h2>
             <div className="max-w-3xl mx-auto space-y-4">

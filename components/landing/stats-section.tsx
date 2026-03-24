@@ -80,12 +80,12 @@ export function StatsSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f1e3d] to-[#0a1628] border border-[rgba(201,168,76,0.15)]"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#111118] to-[#0a0a0f] border border-[rgba(99,102,241,0.15)]"
         >
           {/* Background decoration */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(201,168,76,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(201,168,76,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-[#c9a84c]/5 to-transparent blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-[#1a3a6e]/20 to-transparent blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-[#6366f1]/5 to-transparent blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-[#8b5cf6]/20 to-transparent blur-3xl" />
 
           <div className="relative p-6 md:p-8">
             {/* Header */}
@@ -94,7 +94,7 @@ export function StatsSection() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="font-serif text-xl md:text-2xl font-bold text-[#f0f4ff] mb-1"
+                className="font-serif text-xl md:text-2xl font-bold text-white mb-1"
               >
                 Trusted by Thousands
               </motion.h3>
@@ -102,7 +102,7 @@ export function StatsSection() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.25 }}
-                className="text-[#8892a4] text-sm"
+                className="text-[#94a3b8] text-sm"
               >
                 Making legal help accessible across India
               </motion.p>
@@ -119,26 +119,26 @@ export function StatsSection() {
                   className="relative text-center"
                 >
                   {/* Icon */}
-                  <div className="inline-flex p-2 rounded-lg bg-[rgba(201,168,76,0.1)] mb-3">
-                    <stat.icon className="w-5 h-5 text-[#c9a84c]" />
+                  <div className="inline-flex p-2 rounded-lg bg-[rgba(99,102,241,0.1)] mb-3">
+                    <stat.icon className="w-5 h-5 text-[#6366f1]" />
                   </div>
 
                   {/* Number */}
-                  <div className="font-serif text-2xl md:text-3xl font-bold text-[#c9a84c] mb-0.5">
+                  <div className="font-serif text-2xl md:text-3xl font-bold text-[#6366f1] mb-0.5">
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} isInView={isInView} />
                   </div>
 
                   {/* Label */}
-                  <div className="text-[#f0f4ff] font-medium text-xs md:text-sm mb-0.5">
+                  <div className="text-white font-medium text-xs md:text-sm mb-0.5">
                     {stat.label}
                   </div>
-                  <div className="text-[#8892a4] text-[10px] hidden md:block">
+                  <div className="text-[#94a3b8] text-[10px] hidden md:block">
                     {stat.description}
                   </div>
 
                   {/* Divider for desktop */}
                   {index < stats.length - 1 && (
-                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-px bg-gradient-to-b from-transparent via-[rgba(201,168,76,0.2)] to-transparent" />
+                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-px bg-gradient-to-b from-transparent via-[rgba(99,102,241,0.2)] to-transparent" />
                   )}
                 </motion.div>
               ))}

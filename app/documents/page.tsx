@@ -9,7 +9,7 @@ import { Navbar } from '@/components/navbar'
 
 export default function DocumentsPage() {
   return (
-    <div className="min-h-screen bg-[#050d1f] pb-20 md:pb-0">
+    <div className="min-h-screen bg-[#0a0a0f] pb-20 md:pb-0">
       <CustomCursor />
       <AnimatedBackground />
       <Navbar />
@@ -22,13 +22,13 @@ export default function DocumentsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#f0f4ff] mb-4">
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Document Requirements{' '}
-              <span className="bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] bg-clip-text text-transparent">
+              <span className="text-[#6366f1]">
                 Checker
               </span>
             </h1>
-            <p className="text-lg text-[#8892a4] max-w-2xl mx-auto">
+            <p className="text-lg text-[#94a3b8] max-w-2xl mx-auto">
               Get the exact documents you need for any government service or legal process. 
               Never be unprepared again.
             </p>

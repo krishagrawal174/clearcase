@@ -316,9 +316,9 @@ export function PropertySelector({ onSelectDispute }: PropertySelectorProps) {
                     </div>
 
                     {/* Duration Warning */}
-                    <div className="p-2 rounded-lg bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)] flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-[#c9a84c] flex-shrink-0 mt-0.5" />
-                      <p className="text-xs text-[#c9a84c]">
+                    <div className="p-2 rounded-lg bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.25)] flex items-start gap-2">
+                      <AlertTriangle className="w-4 h-4 text-[#6366f1] flex-shrink-0 mt-0.5" />
+                      <p className="text-xs text-[#6366f1]">
                         Estimated Duration: {selectedDispute.info.estimatedDuration}. Consider mediation/settlement for faster resolution.
                       </p>
                     </div>

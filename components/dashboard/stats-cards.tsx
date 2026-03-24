@@ -11,8 +11,8 @@ const stats = [
     label: 'Total Clients',
     trend: '+3 this month',
     trendUp: true,
-    gradient: 'from-[#c9a84c] to-[#e8d48a]',
-    bgGlow: 'rgba(201,168,76,0.1)',
+    gradient: 'from-[#6366f1] to-[#8b5cf6]',
+    bgGlow: 'rgba(99,102,241,0.1)',
   },
   {
     icon: Briefcase,
@@ -79,7 +79,7 @@ export function StatsCards() {
           key={stat.label}
           variants={itemVariants}
           whileHover={{ scale: 1.02, y: -4 }}
-          className="relative p-5 rounded-2xl bg-[rgba(255,255,255,0.04)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] overflow-hidden group"
+          className="relative p-5 rounded-2xl bg-[#111118] border border-[#1e1e2e] transition-all duration-300 hover:border-[rgba(99,102,241,0.3)] overflow-hidden group"
         >
           {/* Background Glow */}
           <div 
@@ -94,7 +94,7 @@ export function StatsCards() {
             </div>
 
             {/* Value */}
-            <div className="font-serif text-3xl font-bold text-[#f0f4ff] mb-1">
+            <div className="font-serif text-3xl font-bold text-white mb-1">
               <AnimatedCounter 
                 end={stat.value} 
                 suffix={stat.suffix || ''} 
@@ -104,10 +104,10 @@ export function StatsCards() {
             </div>
 
             {/* Label */}
-            <div className="text-sm text-[#8892a4] mb-3">{stat.label}</div>
+            <div className="text-sm text-[#94a3b8] mb-3">{stat.label}</div>
 
             {/* Trend */}
-            <div className={`flex items-center gap-1 text-xs ${stat.trendUp ? 'text-green-400' : 'text-[#c9a84c]'}`}>
+            <div className={`flex items-center gap-1 text-xs ${stat.trendUp ? 'text-[#10b981]' : 'text-[#6366f1]'}`}>
               {stat.trendUp ? (
                 <TrendingUp className="w-3.5 h-3.5" />
               ) : (
