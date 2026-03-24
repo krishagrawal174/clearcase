@@ -1,41 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Scale, ArrowLeft } from 'lucide-react'
 import { DocumentChecker } from '@/components/documents/document-checker'
 import { CustomCursor } from '@/components/custom-cursor'
 import { AnimatedBackground } from '@/components/animated-background'
 import { MobileNav } from '@/components/chat/mobile-nav'
+import { Navbar } from '@/components/navbar'
 
 export default function DocumentsPage() {
   return (
     <div className="min-h-screen bg-[#050d1f] pb-20 md:pb-0">
       <CustomCursor />
       <AnimatedBackground />
-
-      {/* Header */}
-      <header className="relative z-10 border-b border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.02)] backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="p-2 rounded-lg hover:bg-[rgba(255,255,255,0.05)] text-[#8892a4] hover:text-[#f0f4ff] transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <div className="flex items-center gap-2">
-              <Scale className="w-6 h-6 text-[#c9a84c]" />
-              <span className="font-serif text-xl font-bold text-[#f0f4ff]">
-                ClearCase
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="relative z-10 py-16 md:py-24 px-4">
+      <section className="relative z-10 pt-24 md:pt-32 pb-16 md:pb-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -8,6 +8,7 @@ import { ChatInput } from '@/components/chat/chat-input'
 import { MobileNav } from '@/components/chat/mobile-nav'
 import { AlimonyCalculator } from '@/components/chat/alimony-calculator'
 import { CustomCursor } from '@/components/custom-cursor'
+import { Navbar } from '@/components/navbar'
 
 const topicLabels: Record<string, string> = {
   divorce: 'Divorce & Separation',
@@ -126,9 +127,12 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex h-screen bg-[#050d1f]">
+    <div className="flex flex-col h-screen bg-[#050d1f]">
       <CustomCursor />
+      <Navbar />
       
+      {/* Main Content Area */}
+      <div className="flex flex-1 pt-16 md:pt-20">
       {/* Sidebar */}
       <ChatSidebar
         activeTopic={activeTopic}
@@ -137,7 +141,7 @@ export default function ChatPage() {
       />
 
       {/* Main Chat Area */}
-      <main className="flex-1 flex flex-col h-screen pb-16 md:pb-0">
+      <main className="flex-1 flex flex-col h-full pb-16 md:pb-0">
         {/* Header */}
         <header className="flex items-center justify-between px-6 py-4 border-b border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.02)]">
           <div className="flex items-center gap-3">
@@ -170,6 +174,7 @@ export default function ChatPage() {
 
       {/* Mobile Navigation */}
       <MobileNav />
+      </div>
     </div>
   )
 }
